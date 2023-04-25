@@ -1,0 +1,10 @@
+﻿- 1 controller => nhiều Action
+- 1 hàm Action => 1 view
+- các loại Redirect:
+	+ RedirectToAction("<tên action>"): chuyển hướng qua các action khác, cùng controller
+	+ RedirectToAction("<tên actions", "<tên controller>"): chuyển hướng qua các action khác, khác controller
+	+ Redirect(<"tên URl">): chuyển tới 1 url
+	+ RedirectToRoute("Default"): chuyển hướng bằng routeName
+- nhúng vào HTML thì thêm dấu "~" vào
+- tên đường dẫn phải trùng với tên action của controller.
+- tạo layout (thành phần dùng chung), file được nằm trong thư mục Shared, các thành phần dùng riêng nằm trong RenderBody()
