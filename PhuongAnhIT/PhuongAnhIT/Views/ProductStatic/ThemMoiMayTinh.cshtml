@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+}
+
+@{
+    ViewBag.Title = "Product Static Computer";
+    ViewBag.ListStudents = new string[] { "Thanh Toan", "Thanh Tri", "Huy Dat", "Ngoc Ty", "Quang Man" };
+    ViewBag.Active = 3;
+}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="heading_container">
+                <h1>PRODUCT STATIC COMPUTER PAGE</h1>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <h3 style="color: orange; text-align: center">Thêm máy mới</h3>
+            <form action="~/ProductStatic/LuuThemMoiMayTinh" method="post">
+                <p>Mã máy:</p>
+                <input type="text" name="MaMay" />
+                <p>Ảnh:</p>
+                <input type="text" name="Anh" />
+                <p>Dòng máy:</p>
+                <input type="text" name="DongMay" />
+                <p>Hãng sản xuất</p>
+                <input type="text" name="HangSanXuat" />
+                <p>Giá Bán</p>
+                <input type="number" name="GiaBan" />
+                <p>Ngày sản xuất</p>
+                <input type="date" name="NgaySanXuat" />
+
+                <input type="submit" value="Thêm">
+            </form>
+        </div>
+    </div>
+</div>
+
+@section PageName{
+    <h2 style="color: white; text-align: center">PRODUCT STATIC COMPUTER PAGE</h2>
+} 

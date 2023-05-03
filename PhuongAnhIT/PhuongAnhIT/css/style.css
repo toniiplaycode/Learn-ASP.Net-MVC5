@@ -2,6 +2,8 @@ body {
   font-family: 'Poppins', sans-serif;
   color: #0c0c0c;
   background-color: #ffffff;
+  height: 100vh !important;
+  position: relative;
 }
 
 .layout_padding {
@@ -421,10 +423,6 @@ a:focus {
   color: rgba(255, 255, 255, 0.8);
 }
 
-.contact_section .contact_form input::-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.8);
-}
-
 .contact_section .contact_form input::placeholder {
   color: rgba(255, 255, 255, 0.8);
 }
@@ -592,22 +590,25 @@ a:focus {
 
 /* footer section*/
 .footer_section {
-  font-weight: 500;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 20px;
-  background-color: #1d1d1d;
+    font-weight: 500;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #1d1d1d;
 }
 
 .footer_section p {
   color: #ffffff;
   margin: 0;
-  text-align: center;
 }
 
 .footer_section a {
   color: #ffffff;
+}
+
+.active{
+    color: red !important;
 }
 
 /* end footer section*/

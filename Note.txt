@@ -8,3 +8,39 @@
 - nhúng vào HTML thì thêm dấu "~" vào
 - tên đường dẫn phải trùng với tên action của controller.
 - tạo layout (thành phần dùng chung), file được nằm trong thư mục Shared, các thành phần dùng riêng nằm trong RenderBody()
+- code C# trong html thì bên trong thẻ HTML là 1 @<code> được gọi là Razor View Engine
+- RenderSection là hiển thị từng thành phần của trang web, được code trong phần layout
+	+ RenderSection("<tên section>", <true hoặc false>): tham số thứ 2 là false thì không bắt buộc
+- Html.Raw(<chuỗi hoặc xử lý logic>) dùng để in ra mã HTML
+- các xử lý logic thì sẽ được viết bên Models và được Controller truyền qua cho Views1
+- truyền dữ liệu từ Controller -> Views là đỗ dữ liệu từ server xuống cho người dùng và render ở Views có 2 cách:
+	+ truyền bằng ViewBag
+	+ truyền qua tham số của View();
+		-> khi muốn truy xuất dữ liệu được truyền từ View() thì bên Views ở đầu trang là @model <kiểu dữ liệu được truyền> khi dùng trong HTML là @Model (viết thường ở đầu trang, khi dùng trong HTML thì viết Hoa chữ cái đầu)
+			+ nếu truyền dữ liệu đơn thuần thì chỉ cần @model<kiểu dữ liệu được truyền>
+			+ nếu kiểu dữ liệu là class thì phải có đường dẫn
+- List dùng hay hơn dùng Array (https://chat.openai.com/c/32e09b37-24b7-4e28-b11d-39cf73ce8278). List dùng để lưu dữ liệu từ CSDL, khi render ra Views thì dùng forEach kết hợp var để render , bên Views thì @model List<đường dẫn>
+- các Extension Method: dùng để thao tác với dữ liệu (https://chat.openai.com/c/fad636d4-167f-4522-8668-49a08c8c9ce0) 
+	+ OrderBy(); sắp xếp tăng dần
+	+ OrderByDescending();  sắp xếp giảm dần
+	+ Where();
+	+ Select();
+	+ Take();
+	+ Skip();
+	+ Any();
+	+ Count();
+	+ ToList(); chuyển đổi 1 đối tượng IEnumerable<T> thành List<T>
+- truyền dữ liệu từ Views -> Controller: này dùng cho form của người dùng nhập, lúc chưa dùng CSDL thì dùng static để lưu lại dữ liệu tạm thời ở server
+- khi dùng Static thì không cần dùng New để khởi tạo đối tượng
+- dùng form để truyền dữ liệu từ Views -> Controller, "action" trong form là link đến Controller Action để xử lý dữ liệu từ form được đẩy lên, Action trong controller phải có các tham số tương ứng với từng input name trong form (tham số ở Action và Name của input không phân biệt hoa thường)
+	+ có 2 phương thức: get & post (mặc định form sẽ là get), get thường chỉ dùng để filter hoặc tìm kiếm, còn nhập dữ liệu từ người dùng thì dùng post để bảo mật
+		- get: các tham số và giá trị sẽ được hiện lên thanh địa chỉ
+		- post: các tham số và giá tị sẽ ẩn, nếu method của form là post thì bên Controller Action phải thêm "[HttpPost]"
+-  dùng form có sẵn, thì tool nó sẽ tự động tạo ra 1 Views có form sẵn, chỉ cần chỉ sửa lại và dùng, cách tạo:
+	1. chọn template Create
+	2. chọn Model class: <ví dụ: MayTinh>
+- thêm class "form-control" của boostrap để ô input và textarea đẹp hơn
+- để hiển thị ra các List dùng có thể dùng tool để tạo Views
+	1. chọn template List
+	2. chọn Model class: <ví dụ: KhachHang>
+- Lưu ảnh vào folder thì bên form thêm enctype = "multipart/form-data", bên tham số của Action thêm "HttpPostedFileBase <name của input type="file">", Ảnh được lưu vào folder Asset

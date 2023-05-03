@@ -1,0 +1,75 @@
+﻿@model PhuongAnhIT.Models.KhachHang
+
+@{
+    ViewBag.Title = "Customer Static";
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+    ViewBag.ListStudents = new string[] { "Thanh Toan", "Thanh Tri", "Huy Dat", "Ngoc Ty", "Quang Man" };
+    ViewBag.Active = 4;
+}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>CUSTOMER STATIC PAGE</h2>
+            <h3 style="color: orange; text-align: center">Thêm mới khách hàng</h3>
+        </div>
+
+        <div class="col-md-12">
+            @* // enctype = "multipart/form-data" thêm mã hoá file khi upload file lên server *@
+            @using (Html.BeginForm("ThemMoiKhachHang", "CustomerStatic", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        <label>ID</label>
+                        @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control", type = "text" } })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tên</label>
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", type = "text" } })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Số điện thoại</label>
+                        @Html.EditorFor(model => model.Number, new { htmlAttributes = new { @class = "form-control", type = "number" } })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Địa chỉ</label>
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", type = "text" } })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", type = "email" } })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ảnh</label>
+                        <input class="form-control" type="file" name="fileAnh" />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="radio" name="Sex" value="Nam" /> Nam
+                        <input type="radio" name="Sex" value="Nữ" /> Nữ
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-12">
+                            <input type="submit" value="Thêm mới" class="btn btn-default" />
+                        </div>
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section PageName{
+    <h2 style="color: white; text-align: center">CUSTOMER STATIC PAGE</h2>
+}

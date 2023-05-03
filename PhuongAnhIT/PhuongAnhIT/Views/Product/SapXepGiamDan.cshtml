@@ -1,0 +1,52 @@
+﻿@model List<PhuongAnhIT.Models.MayTinh>
+
+@{
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+}
+
+@{
+    ViewBag.Title = "Product Computer";
+    ViewBag.ListStudents = new string[] { "Thanh Toan", "Thanh Tri", "Huy Dat", "Ngoc Ty", "Quang Man" };
+    ViewBag.Active = 2;
+}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="heading_container">
+                <h1>PRODUCT COMPUTER PAGE</h1>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <h3 style="color: orange; text-align: center">Máy theo giá giảm dần</h3>
+
+            <table width="100%" border="1">
+                <tr>
+                    <th>Mã máy</th>
+                    <th>Ảnh</th>
+                    <th>Dòng máy</th>
+                    <th>Giá bán</th>
+                    <th>Ngày sản xuất</th>
+                    <th>Hãng sản xuất</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.MaMay</td>
+                        <td>
+                            <img width="100px" src="@item.Anh" alt="Anh May Tinh" />
+                        </td>
+                        <td>@item.DongMay</td>
+                        <td>@string.Format("{0:#,0}", item.GiaBan)</td>
+                        <td>@string.Format("{0:dd-MM-yyyy}", item.NgaySanXuat)</td>
+                        <td>@item.HangSanXuat</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+@section PageName{
+    <h2 style="color: white; text-align: center">PRODUCT COMPUTER PAGE</h2>
+} 

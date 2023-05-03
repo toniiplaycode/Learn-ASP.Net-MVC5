@@ -123,13 +123,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AboutController.cs" />
-    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\CustomerStaticController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ServiceController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductStaticController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\clsSinhVien.cs" />
+    <Compile Include="Models\DanhSachKhachHangStatic.cs" />
+    <Compile Include="Models\DanhSachMayTinhStatic.cs" />
+    <Compile Include="Models\KhachHang.cs" />
+    <Compile Include="Models\MathHelp.cs" />
+    <Compile Include="Models\MayTinh.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -141,14 +147,20 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\About\Index.cshtml" />
-    <Content Include="Views\Service\Index.cshtml" />
-    <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Shared\LayoutUser.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\HaiMayGiaThapNhat.cshtml" />
+    <Content Include="Views\Product\SapXepGiamDan.cshtml" />
+    <Content Include="Views\Product\HangAsus.cshtml" />
+    <Content Include="Views\ProductStatic\Index.cshtml" />
+    <Content Include="Views\ProductStatic\ThemMoiMayTinh.cshtml" />
+    <Content Include="Views\ProductStatic\ThemMoiMayTinh2.cshtml" />
+    <Content Include="Views\CustomerStatic\Index.cshtml" />
+    <Content Include="Views\CustomerStatic\ThemMoiKhachHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Asset\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

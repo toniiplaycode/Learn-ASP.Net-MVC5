@@ -35,6 +35,8 @@ body {
     @include main-font;
     color: #0c0c0c;
     background-color: #ffffff;
+    position: relative;
+    height: 100vh;
 }
 
 .layout_padding {
@@ -583,7 +585,8 @@ a:focus {
     justify-content: center;
     padding: 20px;
     background-color: #1d1d1d;
-
+    position: absolute;
+    bottom: 0;
 }
 
 .footer_section p {

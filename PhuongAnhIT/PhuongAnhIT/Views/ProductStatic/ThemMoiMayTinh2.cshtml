@@ -1,0 +1,81 @@
+﻿@model PhuongAnhIT.Models.MayTinh
+
+@{
+    ViewBag.Title = "Product Static Computer";
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+    ViewBag.ListStudents = new string[] { "Thanh Toan", "Thanh Tri", "Huy Dat", "Ngoc Ty", "Quang Man" };
+    ViewBag.Active = 3;
+}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>PRODUCT STATIC COMPUTER PAGE</h1>
+            <h3 style="color: orange; text-align: center">Thêm mới máy tính dùng tool tạo Views có sẵn form</h3>
+        </div>
+
+        <div class="col-md-12">
+            @using (Html.BeginForm("ThemMoiMayTinh2", "ProductStatic", FormMethod.Post)) // using (Html.BeginForm()) này là hàm tạo form mặc định là method get,3 tham số: 1 Action, 2 controller, 3 method
+            {
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })  @* // Dùng để in ra lỗi *@
+
+                    @* //Html.EditorFor là thẻ input, thêm type (text, number, date,...) trong htmlAttributes *@
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <labe>Mã máy</labe>
+                            @Html.EditorFor(model => model.MaMay, new { htmlAttributes = new { @class = "form-control", type = "string" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <labe>Ảnh</labe>
+                            @Html.EditorFor(model => model.Anh, new { htmlAttributes = new { @class = "form-control", type = "string" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label>Dòng máy</label>
+                            @Html.EditorFor(model => model.DongMay, new { htmlAttributes = new { @class = "form-control", type = "string" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label>Giá bán</label>
+                            @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control", type = "number" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label>Ngày sản xuất</label>
+                            @Html.EditorFor(model => model.NgaySanXuat, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div>Hãng sản xuất</div>
+                            @Html.EditorFor(model => model.HangSanXuat, new { htmlAttributes = new { @class = "form-control", type = "string" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-12">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+@section PageName{
+    <h2 style="color: white; text-align: center">PRODUCT STATIC COMPUTER PAGE</h2>
+}
