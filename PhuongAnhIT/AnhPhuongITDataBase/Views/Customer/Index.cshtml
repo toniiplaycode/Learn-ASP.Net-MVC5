@@ -1,0 +1,53 @@
+﻿@model IEnumerable<AnhPhuongITDataBase.Models.KhachHang>
+
+@{
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+    ViewBag.Title = "customer page";
+    ViewBag.ListStudents = new string[] { "Thanh Toan", "Thanh Tri", "Huy Dat", "Ngoc Ty", "Quang Man" };
+    ViewBag.Active = 1;
+}
+
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-12">
+            <a href="~/Customer/AddCustomer">Thêm mới khách hàng</a>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TenKhachHang)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SoDienThoai)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DiaChi)
+                    </th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenKhachHang)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SoDienThoai)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DiaChi)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "EditCustomer", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "DeleteCustomer", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+@section PageName{
+    <h2 style="color: white; text-align: center">CUSTOMER PAGE</h2>
+}

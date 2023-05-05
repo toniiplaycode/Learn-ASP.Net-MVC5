@@ -70,3 +70,7 @@ B:\ASP.NET\PhuongAnhIT\AnhPhuongITDataBase\obj\Debug\AnhPhuongITDataBase.csproj.
 B:\ASP.NET\PhuongAnhIT\AnhPhuongITDataBase\obj\Debug\AnhPhuongITDataBase.csproj.CopyComplete
 B:\ASP.NET\PhuongAnhIT\AnhPhuongITDataBase\obj\Debug\AnhPhuongITDataBase.dll
 B:\ASP.NET\PhuongAnhIT\AnhPhuongITDataBase\obj\Debug\AnhPhuongITDataBase.pdb
+B:\ASP.NET\PhuongAnhIT\AnhPhuongITDataBase\bin\EntityFramework.dll
+B:\ASP.NET\PhuongAnhIT\AnhPhuongITDataBase\bin\EntityFramework.SqlServer.dll
+B:\ASP.NET\PhuongAnhIT\AnhPhuongITDataBase\bin\EntityFramework.xml
+B:\ASP.NET\PhuongAnhIT\AnhPhuongITDataBase\bin\EntityFramework.SqlServer.xml

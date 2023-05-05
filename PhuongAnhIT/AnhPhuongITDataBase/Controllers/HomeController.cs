@@ -2,7 +2,7 @@
 
 namespace AnhPhuongITDataBase.Controllers
 {
-    public class HomeController : Controller
+    public class CustomerController : Controller
     {
         // GET: Home
         public ActionResult Index()

@@ -55,4 +55,17 @@
 - tạo Views detail:
 	1. chọn template Detail
 	2. chọn Model class: <ví dụ: DonHang>
-- dùng Ado.net để kết nối với DB
+----------------------DataBase--------------------
+- tạo DB bên SQLServer sau đó dùng Ado.net và Entity framework để kết nối với DB, tạo DB trong thư mục Models
+- tạo Views để hiển thị danh sách khi dùng với CSDL
+	+ chọn template List
+	+ chọn model class: <ví dụ: KhachHang(AnhPhuongITDataBase.Models)>
+	+ chọn data context class: <ví dụ: PhuongAnhITEntities(AnhPhuongITDataBase.Models)>
+- tạo Views để thêm dữ liệu khi dùng với CSDL
+	+ chọn template Create
+	+ chọn model class: <ví dụ: KhachHang(AnhPhuongITDataBase.Models)>
+	+ chọn data context class: <ví dụ: PhuongAnhITEntities(AnhPhuongITDataBase.Models)>
+- tạo Views để sửa dữ liệu khi dùng với CSDL
+	+ chọn template Edit
+	+ chọn model class: <ví dụ: KhachHang(AnhPhuongITDataBase.Models)>
+	+ chọn data context class: <ví dụ: PhuongAnhITEntities(AnhPhuongITDataBase.Models)>
