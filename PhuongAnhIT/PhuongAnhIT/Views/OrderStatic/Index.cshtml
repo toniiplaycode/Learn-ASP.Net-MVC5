@@ -1,0 +1,76 @@
+﻿@model IEnumerable<PhuongAnhIT.Models.DonHang>
+
+@{
+    ViewBag.Title = "Order Static";
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+    ViewBag.ListStudents = new string[] { "Thanh Toan", "Thanh Tri", "Huy Dat", "Ngoc Ty", "Quang Man" };
+    ViewBag.Active = 5;
+}
+
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>ORDER STATIC PAGE</h1>
+            <p>
+                <a href="~/OrderStatic/ThemMoiDonHang">Thêm mới đơn hàng</a>
+            </p>
+        </div>
+
+        <div class="col-md-12">
+            <table class="table">
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Tên
+                    </th>
+                    <th>
+                        Số điện thoại
+                    </th>
+                    <th>
+                        Địa chỉ
+                    </th>
+                    <th>
+                        Ngày đặt đơn hàng
+                    </th>
+                    <th>
+                        Thao tác
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NameCustomer)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhoneNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OrderDate)
+                        </td>
+                        <td>
+                            @* // Html.ActionLink tham số thứ nhất là tên link, thứ 2 là tên Action, thứ 3 là tham số truyền lên URL *@
+                            @Html.ActionLink("Detail", "ChiTietDonHang", new { idDonHang = item.Id }) |
+                            @Html.ActionLink("Edit", "CapNhatDonHang", new { idDonHang = item.Id }) |
+                            @Html.ActionLink("Delete", "XoaDonHang", new { idDonHang = item.Id })
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+@section PageName{
+    <h2 style="color: white; text-align: center">ORDER STATIC PAGE</h2>
+}

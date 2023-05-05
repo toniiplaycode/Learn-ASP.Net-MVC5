@@ -4,7 +4,7 @@
     ViewBag.Title = "Customer Static";
     Layout = "~/Views/Shared/LayoutUser.cshtml";
     ViewBag.ListStudents = new string[] { "Thanh Toan", "Thanh Tri", "Huy Dat", "Ngoc Ty", "Quang Man" };
-    ViewBag.Active = 6;
+    ViewBag.Active = 4;
 }
 
 <div class="container my-5">
@@ -41,7 +41,7 @@
                         @Html.DisplayNameFor(model => model.Sex)
                     </th>
                     <th>
-                        <label>Action</label>
+                        Action
                     </th>
                 </tr>
 
@@ -70,13 +70,11 @@
                             @Html.DisplayFor(modelItem => item.Sex)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                            <a href="~/CustomerStatic/CapNhatKhachHang?idKhachHang=@item.Id">Sửa</a> | 
+                            <a onClick="confirmDelete(@item.Id)" href="#">Xoá</a>
                         </td>
                     </tr>
                 }
-
             </table>
         </div>
     </div>
@@ -84,4 +82,14 @@
 
 @section PageName{
     <h2 style="color: white; text-align: center">CUSTOMER STATIC PAGE</h2>
+}
+
+@section handleJavascript{
+    <script>
+        const confirmDelete = (id) => {
+            if (confirm("Bạn chắc chắn là xoá chứ ?") == true) {
+                window.location.href = "/CustomerStatic/XoaKhachHang?idKhachHang=" + id; 
+            }
+        }
+    </script>
 }

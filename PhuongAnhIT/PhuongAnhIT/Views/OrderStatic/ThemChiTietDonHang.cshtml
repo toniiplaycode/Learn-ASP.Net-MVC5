@@ -1,0 +1,82 @@
+﻿@model PhuongAnhIT.Models.MayTinh
+
+@{
+    ViewBag.Title = "Order Static";
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+    ViewBag.ListStudents = new string[] { "Thanh Toan", "Thanh Tri", "Huy Dat", "Ngoc Ty", "Quang Man" };
+    ViewBag.Active = 5;
+}
+
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>ORDER STATIC PAGE</h2>
+            <h3 style="color: orange; text-align: center">Thêm mới máy tính từng đơn hàng</h3>
+        </div>
+
+        <div class="col-md-12">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <input name="idDonHang" value="@ViewBag.idDonHang" type="hidden" />
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label>Mã máy</label>
+                            @Html.EditorFor(model => model.MaMay, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                        
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label>Ảnh</label>
+                            @Html.EditorFor(model => model.Anh, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label>Dòng máy</label>
+                            @Html.EditorFor(model => model.DongMay, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label>Giá bán</label>
+                            @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label>Ngày sản xuất</label>
+                            @Html.EditorFor(model => model.NgaySanXuat, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label>Hãng sản xuất</label>
+                            @Html.EditorFor(model => model.HangSanXuat, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-12">
+                            <input type="submit" value="Thêm" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section PageName{
+    <h2 style="color: white; text-align: center">ORDER STATIC PAGE</h2>
+}
+    

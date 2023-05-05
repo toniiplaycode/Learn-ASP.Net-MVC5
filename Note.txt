@@ -2,6 +2,7 @@
 - 1 hàm Action => 1 view
 - các loại Redirect:
 	+ RedirectToAction("<tên action>"): chuyển hướng qua các action khác, cùng controller
+	+ RedirectToAction("<tên action>", new {<tên tham số>}): chuyển hướng qua các action khác, cùng controller, có thêm tham số
 	+ RedirectToAction("<tên actions", "<tên controller>"): chuyển hướng qua các action khác, khác controller
 	+ Redirect(<"tên URl">): chuyển tới 1 url
 	+ RedirectToRoute("Default"): chuyển hướng bằng routeName
@@ -36,11 +37,22 @@
 	+ có 2 phương thức: get & post (mặc định form sẽ là get), get thường chỉ dùng để filter hoặc tìm kiếm, còn nhập dữ liệu từ người dùng thì dùng post để bảo mật
 		- get: các tham số và giá trị sẽ được hiện lên thanh địa chỉ
 		- post: các tham số và giá tị sẽ ẩn, nếu method của form là post thì bên Controller Action phải thêm "[HttpPost]"
--  dùng form có sẵn, thì tool nó sẽ tự động tạo ra 1 Views có form sẵn, chỉ cần chỉ sửa lại và dùng, cách tạo:
+-  dùng form có sẵn, thì tool nó sẽ tự động tạo ra 1 Views Razor có form sẵn, chỉ cần chỉ sửa lại và dùng, cách tạo:
 	1. chọn template Create
 	2. chọn Model class: <ví dụ: MayTinh>
 - thêm class "form-control" của boostrap để ô input và textarea đẹp hơn
-- để hiển thị ra các List dùng có thể dùng tool để tạo Views
+- để hiển thị ra các List dùng có thể dùng tool để tạo Views Razor
 	1. chọn template List
 	2. chọn Model class: <ví dụ: KhachHang>
 - Lưu ảnh vào folder thì bên form thêm enctype = "multipart/form-data", bên tham số của Action thêm "HttpPostedFileBase <name của input type="file">", Ảnh được lưu vào folder Asset
+- tạo form cập nhật từ tool để tạo Views Razor
+	1. chọn template Edit
+	2. chọn Model class: <ví dụ: KhachHang>
+- List<T>.SingleOrDefault(<điều kiện>): hàm trả về 1 phần tử trong List dựa theo 1 điều kiện 
+- string.IsNullOrEmpty(): hàm check null hoặc empty, chỉ áp dụng cho kiểu dữ liệu string
+- do dùng static để lưu tạm dữ liệu nên thuộc tính id không tự động tăng được nên phải nhập id từ input 
+- form cập nhật có thể copy y nguyên form thêm mới và chỉnh lại 1 chút để dùng
+- tạo Views detail:
+	1. chọn template Detail
+	2. chọn Model class: <ví dụ: DonHang>
+- dùng Ado.net để kết nối với DB

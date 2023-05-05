@@ -1,0 +1,101 @@
+﻿@model PhuongAnhIT.Models.DonHang
+
+@{
+    ViewBag.Title = "Order Static";
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+    ViewBag.ListStudents = new string[] { "Thanh Toan", "Thanh Tri", "Huy Dat", "Ngoc Ty", "Quang Man" };
+    ViewBag.Active = 5;
+}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>ORDER STATIC PAGE</h2>
+            <h3 style="color: orange; text-align: center">Chi tiết đơn hàng</h3>
+            <hr />
+        </div>
+
+        <div class="col-md-2">
+            <div>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Id)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NameCustomer)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NameCustomer)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PhoneNumber)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.PhoneNumber)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Address)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.OrderDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.OrderDate)
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+        
+        <div class="col-md-10">
+            <a href="~/OrderStatic/ThemChiTietDonHang?idDonHang=@Model.Id">Thêm chi tiết đơn hàng</a>
+            <table class="table table-striped">
+                <tr>
+                    <th>Mã máy</th>
+                    <th>Ảnh</th>
+                    <th>Dòng máy</th>
+                    <th>Giá bán</th>
+                    <th>Ngày sản xuất</th>
+                    <th>Hãng sản xuất</th>
+                    <th>Thao tác</th>
+                </tr>
+                @foreach (var item in Model.MayTinhDatMua)
+                {
+                    <tr>
+                        <td>@item.MaMay</td>
+                        <td>
+                           <img src=@item.Anh style="width: 100px; border-radius: 10px;"/>
+                        </td>
+                        <td>@item.DongMay</td>
+                        <td>@item.GiaBan</td>
+                        <td>@item.NgaySanXuat</td>
+                        <td>@item.HangSanXuat</td>
+                        <td>
+                            <a href="~/OrderStatic/CapNhatChiTietDonHang?idDonHang=@Model.Id&maMay=@item.MaMay">Sửa</a> | <a href="~/OrderStatic/XoaChiTietDonHang?idDonHang=@Model.Id&maMay=@item.MaMay">Xoá</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+@section PageName{
+    <h2 style="color: white; text-align: center">ORDER STATIC PAGE</h2>
+}
+

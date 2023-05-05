@@ -1,0 +1,83 @@
+﻿@model PhuongAnhIT.Models.KhachHang
+
+@{
+    ViewBag.Title = "Customer Static";
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+    ViewBag.ListStudents = new string[] { "Thanh Toan", "Thanh Tri", "Huy Dat", "Ngoc Ty", "Quang Man" };
+    ViewBag.Active = 4;
+}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>CUSTOMER STATIC PAGE</h2>
+            <h3 style="color: orange; text-align: center">Sửa khách hàng ID: @Model.Id</h3>
+        </div>
+
+        <div class="col-md-12">
+            @* Html.BeginForm không cần nhận 3 tham số: Action, Controller, Method thì vẫn có thể hoạt động *@
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @* // Html.HidenFor như input có value id và type là hidden *@
+                    @Html.HiddenFor(model => model.Id)
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <labl>Tên</labl>
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", type = "text" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <labl>Số điện thoại</labl>
+                            @Html.EditorFor(model => model.Number, new { htmlAttributes = new { @class = "form-control", type = "number" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <labl>Địa chỉ</labl>
+                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", type = "text" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <labl>Email</labl>
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", type = "email" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <labl>Ảnh</labl>
+                            @Html.EditorFor(model => model.Avatar, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <labl>Giới tính</labl>
+                            @Html.EditorFor(model => model.Sex, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-12">
+                            <input type="submit" value="Sửa" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section PageName{
+    <h2 style="color: white; text-align: center">CUSTOMER STATIC PAGE</h2>
+}

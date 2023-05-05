@@ -38,7 +38,7 @@ namespace PhuongAnhIT.Controllers
             return RedirectToAction("Index");
         }
 
-        //#2 Dùng tool tạo View có form sẵn(chọn template Create, Model class MayTinh), tham số return View là Models, method bên form là postl, 2 action trùng tên với nhau
+        //#2 Dùng tool tạo View có form sẵn(chọn template Create, Model class MayTinh), tham số return View là Models, method bên form là post, 2 action trùng tên với nhau
         public ActionResult ThemMoiMayTinh2()
         {
             return View(new MayTinh());

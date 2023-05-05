@@ -1,0 +1,74 @@
+﻿@model PhuongAnhIT.Models.DonHang
+
+@{
+    ViewBag.Title = "Order Static";
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+    ViewBag.ListStudents = new string[] { "Thanh Toan", "Thanh Tri", "Huy Dat", "Ngoc Ty", "Quang Man" };
+    ViewBag.Active = 5;
+}
+
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>ORDER STATIC PAGE</h2>
+            <h3 style="color: orange; text-align: center">Thêm mới đơn hàng</h3>
+        </div>
+
+        <div class="col-md-12">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label>Id</label>
+                            @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label>Tên</label>
+                            @Html.EditorFor(model => model.NameCustomer, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label>Số điện thoại</label>
+                            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control", type = "number" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label>Địa chỉ</label>
+                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label>Ngày đặt hàng</label>
+                            @* input này copy, có sẵn ngày giờ hiện tại *@
+                            <input class="form-control" name="OrderDate" value="@Html.Raw((Model.OrderDate??DateTime.Now).ToString("yyyy-MM-dd HH:mm").Replace(' ','T'))" type="datetime-local" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-12">
+                            <input type="submit" value="Thêm mới" class="btn btn-default" />
+                        </div>
+                    </div>  
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section PageName{
+    <h2 style="color: white; text-align: center">ORDER STATIC PAGE</h2>
+}
