@@ -1,0 +1,26 @@
+nav{
+    height: 30px;
+}
+
+.admin{
+    position: relative;
+    float: right;
+}
+
+.admin:hover .sign-out{
+    display: block;
+}
+
+.sign-out{
+    position: absolute;
+    text-align: center;
+    background: lightgrey;
+    width: 100px;
+    right: 0;
+    display: none ;
+}
+
+aside{
+    height: 1000px;
+}
+

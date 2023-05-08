@@ -10,9 +10,8 @@
 namespace AnhPhuongITDataBase.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class KhachHang
+    public partial class filterLoaiKH_Result
     {
         public int Id { get; set; }
         public string TenKhachHang { get; set; }
@@ -20,7 +19,7 @@ namespace AnhPhuongITDataBase.Models
         public string SoDienThoai { get; set; }
         public string DiaChi { get; set; }
         public Nullable<int> IdLoaiKhachHang { get; set; }
-    
-        public virtual PhanLoaiKhachHang PhanLoaiKhachHang { get; set; }
+        public int Id1 { get; set; }
+        public string TenPhanLoai { get; set; }
     }
 }

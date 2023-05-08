@@ -26,6 +26,6 @@ namespace AnhPhuongITDataBase.Models
         }
     
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
-        public virtual DbSet<MayTinh> MayTinhs { get; set; }
+        public virtual DbSet<PhanLoaiKhachHang> PhanLoaiKhachHangs { get; set; }
     }
 }

@@ -6,20 +6,38 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TenKhachHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Anh" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="SoDienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IdLoaiKhachHang" Type="Int32" />
+    <NavigationProperty Name="PhanLoaiKhachHang" Relationship="Self.FK_KhachHang_PhanLoaiKhachHang" FromRole="KhachHang" ToRole="PhanLoaiKhachHang" />
   </EntityType>
-  <EntityType Name="MayTinh">
+  <EntityType Name="PhanLoaiKhachHang">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TenMayTinh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="HangSanXuat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="NamSanXuat" Type="Int32" />
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="TenPhanLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="KhachHangs" Relationship="Self.FK_KhachHang_PhanLoaiKhachHang" FromRole="PhanLoaiKhachHang" ToRole="KhachHang" />
   </EntityType>
+  <Association Name="FK_KhachHang_PhanLoaiKhachHang">
+    <End Role="PhanLoaiKhachHang" Type="Self.PhanLoaiKhachHang" Multiplicity="0..1" />
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhanLoaiKhachHang">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="KhachHang">
+        <PropertyRef Name="IdLoaiKhachHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="PhuongAnhITEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
-    <EntitySet Name="MayTinhs" EntityType="Self.MayTinh" />
+    <EntitySet Name="PhanLoaiKhachHangs" EntityType="Self.PhanLoaiKhachHang" />
+    <AssociationSet Name="FK_KhachHang_PhanLoaiKhachHang" Association="Self.FK_KhachHang_PhanLoaiKhachHang">
+      <End Role="PhanLoaiKhachHang" EntitySet="PhanLoaiKhachHangs" />
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -6,20 +6,36 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TenKhachHang" Type="nvarchar" MaxLength="50" />
+    <Property Name="Anh" Type="varbinary(max)" />
     <Property Name="SoDienThoai" Type="nvarchar" MaxLength="50" />
     <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
+    <Property Name="IdLoaiKhachHang" Type="int" />
   </EntityType>
-  <EntityType Name="MayTinh">
+  <EntityType Name="PhanLoaiKhachHang">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="TenMayTinh" Type="nvarchar" MaxLength="100" />
-    <Property Name="HangSanXuat" Type="nvarchar" MaxLength="50" />
-    <Property Name="NamSanXuat" Type="int" />
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="TenPhanLoai" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <Association Name="FK_KhachHang_PhanLoaiKhachHang">
+    <End Role="PhanLoaiKhachHang" Type="Self.PhanLoaiKhachHang" Multiplicity="0..1" />
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhanLoaiKhachHang">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="KhachHang">
+        <PropertyRef Name="IdLoaiKhachHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="PhuongAnhITModelStoreContainer">
     <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="MayTinh" EntityType="Self.MayTinh" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhanLoaiKhachHang" EntityType="Self.PhanLoaiKhachHang" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_KhachHang_PhanLoaiKhachHang" Association="Self.FK_KhachHang_PhanLoaiKhachHang">
+      <End Role="PhanLoaiKhachHang" EntitySet="PhanLoaiKhachHang" />
+      <End Role="KhachHang" EntitySet="KhachHang" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

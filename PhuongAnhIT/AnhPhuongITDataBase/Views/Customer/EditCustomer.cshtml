@@ -5,12 +5,14 @@
     ViewBag.Title = "customer page";
     ViewBag.ListStudents = new string[] { "Thanh Toan", "Thanh Tri", "Huy Dat", "Ngoc Ty", "Quang Man" };
     ViewBag.Active = 1;
+    // phải khai báo đối tượng DB 
+    AnhPhuongITDataBase.Models.PhuongAnhITEntities db = new AnhPhuongITDataBase.Models.PhuongAnhITEntities();
 }
 
 <div class="container my-5">
     <div class="row">
         <div class="col-md-12">
-            @using (Html.BeginForm())
+            @using (Html.BeginForm("EditCustomer", "Customer", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
 
@@ -26,6 +28,16 @@
                     </div>
 
                     <div class="form-group">
+                        <div class="col-md-12">
+                            <label>Chọn ảnh mới</label>
+                            <input class="form-control" type="file" name="imageCustomer" />
+                            <br />
+                            <p>Ảnh cũ</p>
+                            <img src="data:image/jpg;base64, @Convert.ToBase64String(Model.Anh)" style="border-radius: 10px; width: 100px" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         @Html.LabelFor(model => model.SoDienThoai, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-12">
                             @Html.EditorFor(model => model.SoDienThoai, new { htmlAttributes = new { @class = "form-control" } })
@@ -36,6 +48,21 @@
                         @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-12">
                             @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IdLoaiKhachHang, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-12">
+                            @* // select phải có name, option phải có value thì submit form bên controller mới nhận được dữ liệu *@
+                            <select class="form-control" name="IdLoaiKhachHang">
+                                @foreach (var loai in db.PhanLoaiKhachHangs.ToList())
+                                {
+                                    <option value=@loai.Id @Html.Raw(loai.Id == Model.IdLoaiKhachHang ? "selected " : "")>
+                                        @loai.TenPhanLoai
+                                    </option>
+                                }
+                            </select>
                         </div>
                     </div>
 

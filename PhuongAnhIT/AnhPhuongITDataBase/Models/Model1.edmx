@@ -11,21 +11,37 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenKhachHang" Type="nvarchar" MaxLength="50" />
+          <Property Name="Anh" Type="varbinary(max)" />
           <Property Name="SoDienThoai" Type="nvarchar" MaxLength="50" />
           <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdLoaiKhachHang" Type="int" />
         </EntityType>
-        <EntityType Name="MayTinh">
+        <EntityType Name="PhanLoaiKhachHang">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TenMayTinh" Type="nvarchar" MaxLength="100" />
-          <Property Name="HangSanXuat" Type="nvarchar" MaxLength="50" />
-          <Property Name="NamSanXuat" Type="int" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="TenPhanLoai" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK_KhachHang_PhanLoaiKhachHang">
+          <End Role="PhanLoaiKhachHang" Type="Self.PhanLoaiKhachHang" Multiplicity="0..1" />
+          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhanLoaiKhachHang">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KhachHang">
+              <PropertyRef Name="IdLoaiKhachHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="PhuongAnhITModelStoreContainer">
           <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MayTinh" EntityType="Self.MayTinh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhanLoaiKhachHang" EntityType="Self.PhanLoaiKhachHang" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_KhachHang_PhanLoaiKhachHang" Association="Self.FK_KhachHang_PhanLoaiKhachHang">
+            <End Role="PhanLoaiKhachHang" EntitySet="PhanLoaiKhachHang" />
+            <End Role="KhachHang" EntitySet="KhachHang" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -38,21 +54,39 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenKhachHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Anh" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="SoDienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdLoaiKhachHang" Type="Int32" />
+          <NavigationProperty Name="PhanLoaiKhachHang" Relationship="Self.FK_KhachHang_PhanLoaiKhachHang" FromRole="KhachHang" ToRole="PhanLoaiKhachHang" />
         </EntityType>
-        <EntityType Name="MayTinh">
+        <EntityType Name="PhanLoaiKhachHang">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenMayTinh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="HangSanXuat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NamSanXuat" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="TenPhanLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="KhachHangs" Relationship="Self.FK_KhachHang_PhanLoaiKhachHang" FromRole="PhanLoaiKhachHang" ToRole="KhachHang" />
         </EntityType>
+        <Association Name="FK_KhachHang_PhanLoaiKhachHang">
+          <End Role="PhanLoaiKhachHang" Type="Self.PhanLoaiKhachHang" Multiplicity="0..1" />
+          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhanLoaiKhachHang">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KhachHang">
+              <PropertyRef Name="IdLoaiKhachHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="PhuongAnhITEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
-          <EntitySet Name="MayTinhs" EntityType="Self.MayTinh" />
+          <EntitySet Name="PhanLoaiKhachHangs" EntityType="Self.PhanLoaiKhachHang" />
+          <AssociationSet Name="FK_KhachHang_PhanLoaiKhachHang" Association="Self.FK_KhachHang_PhanLoaiKhachHang">
+            <End Role="PhanLoaiKhachHang" EntitySet="PhanLoaiKhachHangs" />
+            <End Role="KhachHang" EntitySet="KhachHangs" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -65,18 +99,18 @@
               <MappingFragment StoreEntitySet="KhachHang">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TenKhachHang" ColumnName="TenKhachHang" />
+                <ScalarProperty Name="Anh" ColumnName="Anh" />
                 <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
                 <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="IdLoaiKhachHang" ColumnName="IdLoaiKhachHang" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MayTinhs">
-            <EntityTypeMapping TypeName="PhuongAnhITModel.MayTinh">
-              <MappingFragment StoreEntitySet="MayTinh">
+          <EntitySetMapping Name="PhanLoaiKhachHangs">
+            <EntityTypeMapping TypeName="PhuongAnhITModel.PhanLoaiKhachHang">
+              <MappingFragment StoreEntitySet="PhanLoaiKhachHang">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="TenMayTinh" ColumnName="TenMayTinh" />
-                <ScalarProperty Name="HangSanXuat" ColumnName="HangSanXuat" />
-                <ScalarProperty Name="NamSanXuat" ColumnName="NamSanXuat" />
+                <ScalarProperty Name="TenPhanLoai" ColumnName="TenPhanLoai" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

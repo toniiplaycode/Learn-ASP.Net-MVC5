@@ -21,7 +21,7 @@
 			+ nếu truyền dữ liệu đơn thuần thì chỉ cần @model<kiểu dữ liệu được truyền>
 			+ nếu kiểu dữ liệu là class thì phải có đường dẫn
 - List dùng hay hơn dùng Array (https://chat.openai.com/c/32e09b37-24b7-4e28-b11d-39cf73ce8278). List dùng để lưu dữ liệu từ CSDL, khi render ra Views thì dùng forEach kết hợp var để render , bên Views thì @model List<đường dẫn>
-- các Extension Method: dùng để thao tác với dữ liệu (https://chat.openai.com/c/fad636d4-167f-4522-8668-49a08c8c9ce0) 
+- các Extension Method: dùng để thao tác với dữ liệu (https://chat.openai.com/c/fad636d4-167f-4522-8668-49a08c8c9ce0), thường dùng cho List<T>
 	+ OrderBy(); sắp xếp tăng dần
 	+ OrderByDescending();  sắp xếp giảm dần
 	+ Where();
@@ -69,3 +69,11 @@
 	+ chọn template Edit
 	+ chọn model class: <ví dụ: KhachHang(AnhPhuongITDataBase.Models)>
 	+ chọn data context class: <ví dụ: PhuongAnhITEntities(AnhPhuongITDataBase.Models)>
+- khi CSDL thay đổi (thêm, sửa, xoá table) thì phải cập nhật lại Entity (update model from database) để dùng được CSDL đã được thay đối 
+- join bảng thì kiểu dữ liệu của 2 trường phải giống nhau
+- AddRange, RemoveRange: thêm và xoá 1 danh sách
+- lưu ảnh vào DB kiểu dữ liệu là varbinary
+- procedures (giống như viết hàm có tham số truyền vào để truy vấn dữ liệu) của SQL dùng để lọc hoặc có thể dùng LINQ của C# (giống mấy câu truy vẫn SQL)
+- tạo 1 phân vùng code của Admin (đầy đủ MVC)
+	+ chọn Add > New Scaffolded Item > MVC > Area
+- dùng session["<tên session>"] để đăng nhập và đăng xuất

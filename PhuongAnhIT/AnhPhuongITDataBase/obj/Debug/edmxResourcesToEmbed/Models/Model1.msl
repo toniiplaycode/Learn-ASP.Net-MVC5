@@ -6,18 +6,18 @@
         <MappingFragment StoreEntitySet="KhachHang">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="TenKhachHang" ColumnName="TenKhachHang" />
+          <ScalarProperty Name="Anh" ColumnName="Anh" />
           <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
           <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="IdLoaiKhachHang" ColumnName="IdLoaiKhachHang" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="MayTinhs">
-      <EntityTypeMapping TypeName="PhuongAnhITModel.MayTinh">
-        <MappingFragment StoreEntitySet="MayTinh">
+    <EntitySetMapping Name="PhanLoaiKhachHangs">
+      <EntityTypeMapping TypeName="PhuongAnhITModel.PhanLoaiKhachHang">
+        <MappingFragment StoreEntitySet="PhanLoaiKhachHang">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="TenMayTinh" ColumnName="TenMayTinh" />
-          <ScalarProperty Name="HangSanXuat" ColumnName="HangSanXuat" />
-          <ScalarProperty Name="NamSanXuat" ColumnName="NamSanXuat" />
+          <ScalarProperty Name="TenPhanLoai" ColumnName="TenPhanLoai" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

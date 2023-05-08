@@ -1,21 +1,36 @@
 ﻿@model IEnumerable<AnhPhuongITDataBase.Models.KhachHang>
-
 @{
     Layout = "~/Views/Shared/LayoutUser.cshtml";
     ViewBag.Title = "customer page";
     ViewBag.ListStudents = new string[] { "Thanh Toan", "Thanh Tri", "Huy Dat", "Ngoc Ty", "Quang Man" };
     ViewBag.Active = 1;
+    AnhPhuongITDataBase.Models.PhuongAnhITEntities db = new AnhPhuongITDataBase.Models.PhuongAnhITEntities();
 }
-
 
 <div class="container my-5">
     <div class="row">
         <div class="col-md-12">
             <a href="~/Customer/AddCustomer">Thêm mới khách hàng</a>
+
+            <div style="float: right;" `>
+                <select class="form-control" onchange="handleFilter(value);">
+                    <option value=""> Tất cả </option>
+                    @foreach (var loai in db.PhanLoaiKhachHangs.ToList())
+                    {
+                        <option value=@loai.Id @Html.Raw(loai.Id == ViewBag.idLoaiKH ? "selected " : "")>
+                            @loai.TenPhanLoai
+                        </option>
+                    }
+                </select>
+            </div>
+
             <table class="table">
                 <tr>
                     <th>
                         @Html.DisplayNameFor(model => model.TenKhachHang)
+                    </th>
+                    <th>
+                        Ảnh đại diện
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.SoDienThoai)
@@ -23,7 +38,12 @@
                     <th>
                         @Html.DisplayNameFor(model => model.DiaChi)
                     </th>
-                    <th></th>
+                    <th>
+                        Loại khách hàng
+                    </th>
+                    <th>
+                        Thao tác
+                    </th>
                 </tr>
                 @foreach (var item in Model)
                 {
@@ -32,10 +52,19 @@
                             @Html.DisplayFor(modelItem => item.TenKhachHang)
                         </td>
                         <td>
+                            <img src="data:image/jpg;base64, @Convert.ToBase64String(item.Anh)" style="border-radius: 10px; width: 100px" />
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.SoDienThoai)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.DiaChi)
+                        </td>
+                        <td>
+                            @if(item.IdLoaiKhachHang != null)
+                            {
+                                @item.PhanLoaiKhachHang.TenPhanLoai
+                            }
                         </td>
                         <td>
                             @Html.ActionLink("Edit", "EditCustomer", new { id = item.Id }) |
@@ -50,4 +79,13 @@
 
 @section PageName{
     <h2 style="color: white; text-align: center">CUSTOMER PAGE</h2>
+}
+
+@section handleJavascript{
+    <script>
+        var handleFilter = (id) => {
+            console.log(id);
+            window.location.href = '/Customer/?idLoaiKH=' + id;
+        }
+    </script>
 }
