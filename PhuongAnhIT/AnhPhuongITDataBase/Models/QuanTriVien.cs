@@ -12,15 +12,11 @@ namespace AnhPhuongITDataBase.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class KhachHang
+    public partial class QuanTriVien
     {
         public int Id { get; set; }
-        public string TenKhachHang { get; set; }
-        public string Anh { get; set; }
-        public string SoDienThoai { get; set; }
-        public string DiaChi { get; set; }
-        public Nullable<int> IdLoaiKhachHang { get; set; }
-    
-        public virtual PhanLoaiKhachHang PhanLoaiKhachHang { get; set; }
+        public string TenQuanTriVien { get; set; }
+        public string MatKhau { get; set; }
+        public Nullable<int> LaQuanLy { get; set; }
     }
 }

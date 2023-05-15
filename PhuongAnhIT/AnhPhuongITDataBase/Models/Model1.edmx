@@ -11,7 +11,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenKhachHang" Type="nvarchar" MaxLength="50" />
-          <Property Name="Anh" Type="varbinary(max)" />
+          <Property Name="Anh" Type="varchar" MaxLength="200" />
           <Property Name="SoDienThoai" Type="nvarchar" MaxLength="50" />
           <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
           <Property Name="IdLoaiKhachHang" Type="int" />
@@ -22,6 +22,15 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="TenPhanLoai" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="QuanTriVien">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenQuanTriVien" Type="nvarchar" MaxLength="50" />
+          <Property Name="MatKhau" Type="nvarchar" MaxLength="50" />
+          <Property Name="LaQuanLy" Type="int" />
         </EntityType>
         <Association Name="FK_KhachHang_PhanLoaiKhachHang">
           <End Role="PhanLoaiKhachHang" Type="Self.PhanLoaiKhachHang" Multiplicity="0..1" />
@@ -38,6 +47,7 @@
         <EntityContainer Name="PhuongAnhITModelStoreContainer">
           <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhanLoaiKhachHang" EntityType="Self.PhanLoaiKhachHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuanTriVien" EntityType="Self.QuanTriVien" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_KhachHang_PhanLoaiKhachHang" Association="Self.FK_KhachHang_PhanLoaiKhachHang">
             <End Role="PhanLoaiKhachHang" EntitySet="PhanLoaiKhachHang" />
             <End Role="KhachHang" EntitySet="KhachHang" />
@@ -54,7 +64,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenKhachHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Anh" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Anh" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="SoDienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IdLoaiKhachHang" Type="Int32" />
@@ -67,6 +77,15 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="TenPhanLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="KhachHangs" Relationship="Self.FK_KhachHang_PhanLoaiKhachHang" FromRole="PhanLoaiKhachHang" ToRole="KhachHang" />
+        </EntityType>
+        <EntityType Name="QuanTriVien">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenQuanTriVien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LaQuanLy" Type="Int32" />
         </EntityType>
         <Association Name="FK_KhachHang_PhanLoaiKhachHang">
           <End Role="PhanLoaiKhachHang" Type="Self.PhanLoaiKhachHang" Multiplicity="0..1" />
@@ -83,6 +102,7 @@
         <EntityContainer Name="PhuongAnhITEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
           <EntitySet Name="PhanLoaiKhachHangs" EntityType="Self.PhanLoaiKhachHang" />
+          <EntitySet Name="QuanTriViens" EntityType="Self.QuanTriVien" />
           <AssociationSet Name="FK_KhachHang_PhanLoaiKhachHang" Association="Self.FK_KhachHang_PhanLoaiKhachHang">
             <End Role="PhanLoaiKhachHang" EntitySet="PhanLoaiKhachHangs" />
             <End Role="KhachHang" EntitySet="KhachHangs" />
@@ -111,6 +131,16 @@
               <MappingFragment StoreEntitySet="PhanLoaiKhachHang">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TenPhanLoai" ColumnName="TenPhanLoai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuanTriViens">
+            <EntityTypeMapping TypeName="PhuongAnhITModel.QuanTriVien">
+              <MappingFragment StoreEntitySet="QuanTriVien">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TenQuanTriVien" ColumnName="TenQuanTriVien" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="LaQuanLy" ColumnName="LaQuanLy" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

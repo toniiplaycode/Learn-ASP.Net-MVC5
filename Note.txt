@@ -72,7 +72,7 @@
 - khi CSDL thay đổi (thêm, sửa, xoá table) thì phải cập nhật lại Entity (update model from database) để dùng được CSDL đã được thay đối 
 - join bảng thì kiểu dữ liệu của 2 trường phải giống nhau
 - AddRange, RemoveRange: thêm và xoá 1 danh sách
-- lưu ảnh vào DB kiểu dữ liệu là varbinary
+- lưu ảnh thì lưu URL vào DB, ảnh thì vào folder Images (https://chat.openai.com/c/dcf3726f-ce0c-428b-8161-8548a113e78b)
 - procedures (giống như viết hàm có tham số truyền vào để truy vấn dữ liệu) của SQL dùng để lọc hoặc có thể dùng LINQ của C# (giống mấy câu truy vẫn SQL)
 - tạo 1 phân vùng code của Admin (đầy đủ MVC)
 	+ chọn Add > New Scaffolded Item > MVC > Area

@@ -52,7 +52,7 @@
                             @Html.DisplayFor(modelItem => item.TenKhachHang)
                         </td>
                         <td>
-                            <img src="data:image/jpg;base64, @Convert.ToBase64String(item.Anh)" style="border-radius: 10px; width: 100px" />
+                            <img src="@Url.Content(item.Anh)" alt="Image" style="width: 100px" />
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.SoDienThoai)

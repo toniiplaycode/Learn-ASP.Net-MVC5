@@ -4,9 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2dc7b4d8e3414d638ef2e8eec3d00ea1" Name="Diagram1">
+      <Diagram DiagramId="7553efab07c24a8b8c8cce36cc631a9e" Name="Diagram1">
         <EntityTypeShape EntityType="PhuongAnhITModel.KhachHang" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="PhuongAnhITModel.PhanLoaiKhachHang" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhuongAnhITModel.QuanTriVien" Width="1.5" PointX="5.625" PointY="2.5" IsExpanded="true" />
         <AssociationConnector Association="PhuongAnhITModel.FK_KhachHang_PhanLoaiKhachHang" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

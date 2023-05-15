@@ -10,8 +10,48 @@
 
 <body>
 
-    <div>
-        @RenderBody()
+    <div class="container-sm">
+        <div class="row">
+            <nav class=" col-12 bg-success">
+                <div class="admin">
+                    <i class="fas fa-user"></i>
+                    @{
+                        var quanTriVien = (AnhPhuongITDataBase.Models.QuanTriVien)HttpContext.Current.Session["admin"];
+                        <span>@quanTriVien.TenQuanTriVien</span>
+                    }
+                    <i class="fas fa-caret-down"></i>
+
+                    <div class="sign-out">
+                        <a href="~/Admin/Home/SignOut">sign out</a>
+                    </div>
+                </div>
+            </nav>
+
+            <aside class=" col-3 bg-info">
+                <ul>
+                    <li class="active">
+                        <a href="~/Admin/Home/QuanLySP">
+                            Quản lý sản phẩm
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/Admin/Home/QuanLyTaiKhoanKH">
+                            Quản lý tài khoản KH
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/Admin/Home/QuanLyTaiKhoanNV">
+                            Quản lý tài khoản NV
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+
+            <main class="col-9 bg-light">
+                @RenderBody()
+            </main>
+
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

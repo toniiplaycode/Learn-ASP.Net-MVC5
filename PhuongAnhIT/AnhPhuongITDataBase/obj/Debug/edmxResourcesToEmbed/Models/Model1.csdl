@@ -6,7 +6,7 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TenKhachHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Anh" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Anh" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="SoDienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="IdLoaiKhachHang" Type="Int32" />
@@ -19,6 +19,15 @@
     <Property Name="Id" Type="Int32" Nullable="false" />
     <Property Name="TenPhanLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="KhachHangs" Relationship="Self.FK_KhachHang_PhanLoaiKhachHang" FromRole="PhanLoaiKhachHang" ToRole="KhachHang" />
+  </EntityType>
+  <EntityType Name="QuanTriVien">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenQuanTriVien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LaQuanLy" Type="Int32" />
   </EntityType>
   <Association Name="FK_KhachHang_PhanLoaiKhachHang">
     <End Role="PhanLoaiKhachHang" Type="Self.PhanLoaiKhachHang" Multiplicity="0..1" />
@@ -35,6 +44,7 @@
   <EntityContainer Name="PhuongAnhITEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
     <EntitySet Name="PhanLoaiKhachHangs" EntityType="Self.PhanLoaiKhachHang" />
+    <EntitySet Name="QuanTriViens" EntityType="Self.QuanTriVien" />
     <AssociationSet Name="FK_KhachHang_PhanLoaiKhachHang" Association="Self.FK_KhachHang_PhanLoaiKhachHang">
       <End Role="PhanLoaiKhachHang" EntitySet="PhanLoaiKhachHangs" />
       <End Role="KhachHang" EntitySet="KhachHangs" />

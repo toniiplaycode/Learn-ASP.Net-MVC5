@@ -1,8 +1,10 @@
 ﻿using AnhPhuongITDataBase.Models;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace AnhPhuongITDataBase.Controllers
 {
@@ -33,11 +35,18 @@ namespace AnhPhuongITDataBase.Controllers
             // 2. thêm mới bản ghi
             PhuongAnhITEntities db = new PhuongAnhITEntities();
 
-            // lưu ảnh vào DB
-            if (imageCustomer != null)
+            // lưu ảnh vào folder và lưu URL vào DB
+            if (ModelState.IsValid && imageCustomer != null && imageCustomer.ContentLength > 0)
             {
-                model.Anh = new byte[imageCustomer.ContentLength];
-                imageCustomer.InputStream.Read(model.Anh, 0, imageCustomer.ContentLength);
+                var fileName = Path.GetFileName(imageCustomer.FileName);
+                var fileNameExtension = Path.GetExtension(imageCustomer.FileName); // lấy đuôi mở rộng
+                if (fileNameExtension == ".webp")
+                {
+                    fileName = Path.ChangeExtension(fileName, ".jpg"); // đuổi đuôi webp thành jpg
+                }
+                var filePath = Path.Combine(Server.MapPath("~/Images"), fileName);
+                imageCustomer.SaveAs(filePath);
+                model.Anh = "~/Images/" + fileName;
             }
 
             db.KhachHangs.Add(model);
@@ -70,11 +79,18 @@ namespace AnhPhuongITDataBase.Controllers
             updateModel.DiaChi = model.DiaChi;
             updateModel.IdLoaiKhachHang = model.IdLoaiKhachHang;
 
-            // nếu có ảnh mới thì lưu ảnh mới vào DB
+            // nếu có ảnh mới thì lưu ảnh mới folder và URL mới vào DB
             if (imageCustomer != null)
             {
-                updateModel.Anh = new byte[imageCustomer.ContentLength];
-                imageCustomer.InputStream.Read(updateModel.Anh, 0, imageCustomer.ContentLength);
+                var fileName = Path.GetFileName(imageCustomer.FileName);
+                var fileNameExtension = Path.GetExtension(imageCustomer.FileName); // lấy đuôi mở rộng
+                if (fileNameExtension == ".webp")
+                {
+                    fileName = Path.ChangeExtension(fileName, ".jpg"); // đuổi đuôi webp thành jpg
+                }
+                var filePath = Path.Combine(Server.MapPath("~/Images"), fileName);
+                imageCustomer.SaveAs(filePath);
+                updateModel.Anh = "~/Images/" + fileName;
             }
 
             db.SaveChanges(); // lưu lại thay đổi

@@ -103,30 +103,6 @@
     <Content Include="css\responsive.css" />
     <Content Include="css\style.css" />
     <Content Include="Global.asax" />
-    <Content Include="images\about-img.png" />
-    <Content Include="images\body_bg.jpg" />
-    <Content Include="images\call-o.png" />
-    <Content Include="images\call.png" />
-    <Content Include="images\client.jpg" />
-    <Content Include="images\contact-img.jpg" />
-    <Content Include="images\envelope-o.png" />
-    <Content Include="images\envelope.png" />
-    <Content Include="images\hero-bg.jpg" />
-    <Content Include="images\location-o.png" />
-    <Content Include="images\location.png" />
-    <Content Include="images\logo.png" />
-    <Content Include="images\menu.png" />
-    <Content Include="images\next-white.png" />
-    <Content Include="images\next.png" />
-    <Content Include="images\offer-img.jpg" />
-    <Content Include="images\prev-white.png" />
-    <Content Include="images\prev.png" />
-    <Content Include="images\quote.png" />
-    <Content Include="images\s-1.png" />
-    <Content Include="images\s-2.png" />
-    <Content Include="images\s-3.png" />
-    <Content Include="images\s-4.png" />
-    <Content Include="images\search-icon.png" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\jquery-3.4.1.min.js" />
     <Content Include="Models\Model1.Context.tt">
@@ -170,12 +146,21 @@
     <Compile Include="Models\PhanLoaiKhachHang.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\QuanTriVien.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="css\style.css.map" />
     <Content Include="css\style.scss" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\SignIn.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\QuanLySP.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\QuanLyTaiKhoanKH.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\QuanLyTaiKhoanNV.cshtml" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -183,14 +168,10 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\SignIn.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\LayoutUser.cshtml" />
-    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Customer\index.cshtml" />
     <Content Include="Views\Customer\AddCustomer.cshtml" />
     <Content Include="Views\Customer\EditCustomer.cshtml" />
     <None Include="Web.Debug.config">
@@ -203,6 +184,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

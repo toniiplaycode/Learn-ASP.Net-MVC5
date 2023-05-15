@@ -1,11 +1,13 @@
-﻿using System.Web.Mvc;
+﻿using AnhPhuongITDataBase.Models;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace AnhPhuongITDataBase.Areas.Admin.Controllers
 {
     public class HomeController : Controller
     {
         // GET: Admin/Home
-        public ActionResult Index()
+        public ActionResult QuanLySP()
         {
             // nếu chưa đăng nhập (chưa có Session) thì không thể vào được trang Index 
             if (Session["admin"] == null)
@@ -15,6 +17,50 @@ namespace AnhPhuongITDataBase.Areas.Admin.Controllers
             else
             {
                 return View();
+            }
+        }
+        public ActionResult QuanLyTaiKhoanKH()
+        {
+            PhuongAnhITEntities db = new PhuongAnhITEntities();
+            QuanTriVien QTV = (QuanTriVien)Session["admin"];
+
+            if (Session["admin"] == null)
+            {
+                return RedirectToAction("SignIn");
+            }
+
+            int ktraQuyen = db.QuanTriViens.Count(m => m.Id == QTV.Id && m.LaQuanLy == 1);
+
+            if (ktraQuyen == 1)
+            {
+                return View();
+            }
+            else
+            {
+                TempData["error"] = "Bạn không có quyền vào Quản Lý Tài Khoản KH !";
+                return RedirectToAction("SignIn");
+            }
+        }
+        public ActionResult QuanLyTaiKhoanNV()
+        {
+            PhuongAnhITEntities db = new PhuongAnhITEntities();
+            QuanTriVien QTV = (QuanTriVien)Session["admin"];
+
+            if (Session["admin"] == null)
+            {
+                return RedirectToAction("SignIn");
+            }
+
+            int ktraQuyen = db.QuanTriViens.Count(m => m.Id == QTV.Id && m.LaQuanLy == 1);
+
+            if (ktraQuyen == 1)
+            {
+                return View();
+            }
+            else
+            {
+                TempData["error"] = "Bạn không có quyền vào Quản Lý Tài Khoản NV !";
+                return RedirectToAction("SignIn");
             }
         }
 
@@ -27,13 +73,16 @@ namespace AnhPhuongITDataBase.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult SignIn(string userName, string password)
         {
+            PhuongAnhITEntities db = new PhuongAnhITEntities();
 
-            // hard code nhập userName và password
-            if (userName.ToLower() == "thanhtoan" && password == "123")
+            var TKAdmin = db.QuanTriViens.SingleOrDefault(m => m.TenQuanTriVien == userName && m.MatKhau == password);
+
+            if (TKAdmin != null)
             {
                 // lưu lại Session
-                Session["admin"] = userName;
-                return RedirectToAction("Index");
+                Session["admin"] = TKAdmin;
+                return RedirectToAction("QuanLySP");
+
             }
             else
             {

@@ -5,7 +5,7 @@
     ViewBag.Title = "customer page";
     ViewBag.ListStudents = new string[] { "Thanh Toan", "Thanh Tri", "Huy Dat", "Ngoc Ty", "Quang Man" };
     ViewBag.Active = 1;
-    // phải khai báo đối tượng DB 
+    // phải khai báo đối tượng DB
     AnhPhuongITDataBase.Models.PhuongAnhITEntities db = new AnhPhuongITDataBase.Models.PhuongAnhITEntities();
 }
 
@@ -30,10 +30,11 @@
                     <div class="form-group">
                         <div class="col-md-12">
                             <label>Chọn ảnh mới</label>
-                            <input class="form-control" type="file" name="imageCustomer" />
+                            <input class="form-control" type="file" name="imageCustomer" id="file-input" />
+                            <img id="img-preview" src="./img.jpg" style="width: 100px" />
                             <br />
                             <p>Ảnh cũ</p>
-                            <img src="data:image/jpg;base64, @Convert.ToBase64String(Model.Anh)" style="border-radius: 10px; width: 100px" />
+                            <img src="@Url.Content(Model.Anh)" alt="Image" style="width: 100px" />
                         </div>
                     </div>
 
@@ -79,4 +80,21 @@
 
 @section PageName{
     <h2 style="color: white; text-align: center">CUSTOMER PAGE</h2>
+}
+
+@section handleJavascript{
+    <script>
+        const input = document.getElementById('file-input');
+        const image = document.getElementById('img-preview');
+        image.style.display = "none"; // khi chưa upload ảnh thì ẩn thẻ img
+
+        input.addEventListener('change', (e) => {
+            console.log(e.target.files[0]);
+            if (e.target.files.length) {
+                const src = URL.createObjectURL(e.target.files[0]);
+                image.src = src;
+                image.style.display = "block"; // khi upload xong thì hiện lên
+            }
+        });
+    </script>
 }
